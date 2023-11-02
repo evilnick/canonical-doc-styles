@@ -13,7 +13,14 @@ outputs:
 runs:
   using: "composite"
   steps:
-    - run: echo Hello ${{ github.action_path  }}.
+    - id: check-config-exists
+    - run: |
+          if ! test -f ./vale.ini; then
+          echo "No vale.ini found, using default"
+          cp ${{ github.action_path }}/vale.ini .
+          fi
+          mkdir .styles
+          cp -r ${{ github.action_path }}/styles .styles
       shell: bash
     - id: random-number-generator
       run: echo "random-number=$(echo $RANDOM)" >> $GITHUB_OUTPUT
