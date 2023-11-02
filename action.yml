@@ -13,7 +13,8 @@ outputs:
 runs:
   using: "composite"
   steps:
-    - run: |
+    - name: check Vale config
+      run: |
         if ! test -f ./vale.ini; then
         echo "No vale.ini found, using default"
         cp ${{ github.action_path }}/vale.ini .
