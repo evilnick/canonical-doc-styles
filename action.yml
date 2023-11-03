@@ -21,7 +21,7 @@ runs:
         if ! test -f ./vale.ini; then
         echo "No vale.ini found, using default"
         cp $ACTION_DIR/vale.ini .
-        sed  -i "s\./styles\$TEMP_DIR/styles\" vale.ini 
+        sed  -i "s:./styles:$TEMP_DIR/styles:" vale.ini 
         fi
         mkdir $TEMP_DIR/styles
         cp -r $ACTION_DIR/styles $TEMP_DIR/styles
