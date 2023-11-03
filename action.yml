@@ -18,17 +18,19 @@ runs:
           TEMP_DIR: ${{ runner.temp }}
           ACTION_DIR: ${{ github.action_path }}
       run: |
+
+        if ! test -d ./styles/Canonical; then
+        mkdir -p styles/Canonical
+        cp $ACTION_DIR/styles/Canonical/* styles/Canonical/
+        echo "Styles copied to working dir"
+        tree styles
+        fi
+
         if ! test -f ./vale.ini; then
         echo "No vale.ini found, using default"
         cp $ACTION_DIR/vale.ini .
-        sed  -i "s:./styles:$TEMP_DIR/styles:" vale.ini 
         fi
-        mkdir $TEMP_DIR/styles
-        cp -r $ACTION_DIR/styles $TEMP_DIR/styles
-        echo "Styles copied to $TEMP_DIR"
-        cat vale.ini
-        echo '========'
-        tree
+        
       shell: bash
     - id: random-number-generator
       run: echo "random-number=$(echo $RANDOM)" >> $GITHUB_OUTPUT
