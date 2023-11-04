@@ -1,7 +1,7 @@
-# 01 - Heading - Do not end with '.'
+# 02 - Heading - Do not begin with code ('`').
 
 extends: existence
-message: "Don't use end punctuation in headings."
+message: "Don't begin a heading with code."
 link: https://docs.ubuntu.com/styleguide/en#headings
 nonword: true
 level: warning
@@ -10,6 +10,6 @@ action:
   name: edit
   params:
     - remove
-    - '.'
+    - '`'
 tokens:
-  - '[a-z0-9][.?!](?:\s|$)'
+  - '^[`]'
