@@ -21,13 +21,45 @@ For information on how to create rules, see the Vale [documentation on Styles][V
 
 The Vale rules are published here so that they can be used in any workflow anywhere. You can run Vale locally, as part of CI or in a GitHub workflow - all you need is Vale, a configuration file (which you can also copy from this repository) and the Canonical Styles. Two common scenarios are also catered for more directly here, as detailed below.
 
-## The Canonical Style gitHub action
+## The Canonical Style GitHub action
 
 This repository also includes a file, `action.yml`, which is the basis of a GitHub action to be used to automatically run Vale checks on incoming pull requests. 
 
 ### Using the Github action in a workflow
 
+Your repository can make use of the action in a workflow. An example workflow is included in this repository and is demonstrated here. Note that the stle guide action is merely part of a functioning workflow.
 
+```yaml
+on: [pull_request]
 
+jobs:
+  vale:
+    name: Style checker
+    runs-on: ubuntu-22.04
+    defaults:
+        run:
+            shell: bash
+            working-directory: .
+    steps:
+        - name: Checkout repo to runner
+          uses: actions/checkout@v3
+        - name: Install styles
+          uses: evilnick/test-action@v0
+        - name: Run Vale tests
+          uses: errata-ai/vale-action@reviewdog
+          with:
+            files: ./docs
+            fail_on_error: true
+```
+
+In the example above, the worklow is organised as a single job. This is important as the actions rely on persistence through the run.
+There are three job steps
+ - The github/checkout action: this fetches the code from the repo calling the workflow
+ - This style guide action: this fetches the styles and, if not present, a default config for Vale
+ - The vale/reviewdog action: this runs Vale using reviewdog, to insert comments into a pull-request.
+
+ The result
+
+ ![Alt text](<Screenshot from 2023-11-03 19-46-45.png>)
 <!-- LINKS -->
 [Vale styles]: https://vale.sh/docs/topics/styles/

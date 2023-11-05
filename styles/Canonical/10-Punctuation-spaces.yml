@@ -3,7 +3,7 @@
 extends: existence
 message: "'%s' should have one space."
 link: 
-level: error
+level: warning
 nonword: true
 tokens:
   - '[a-z][.?!] {2,}[A-Z]'

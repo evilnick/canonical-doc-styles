@@ -1,0 +1,12 @@
+# 20-Bad phrasing
+
+extends: existence
+message: Consider removing '%s'
+level: warning
+ignorecase: true
+tokens:
+    - breath of fresh air
+    - Linux for humans
+
+# REASONING
+# These tired phrases are beyond cliché and just make your work seem dated.
