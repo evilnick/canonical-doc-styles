@@ -1,6 +1,6 @@
-name: Canonical docs rules
+name: Canonical Vale Styles
 author: '@evilnick'
-description: 'Installs Vale rules from the Canonical documentation style guide.'
+description: 'Installs Vale style rules from the Canonical documentation style guide.'
 inputs:
   vale-config:  
     description: 'path/to/vale.ini to use'
@@ -32,8 +32,4 @@ runs:
         fi
         
       shell: bash
-    - id: random-number-generator
-      run: echo "random-number=$(echo $RANDOM)" >> $GITHUB_OUTPUT
-      shell: bash
-    - run: echo "${{ github.action_path }}" >> $GITHUB_PATH
-      shell: bash
+
