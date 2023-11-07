@@ -1,4 +1,4 @@
-# Canonical Style Guide (https://docs.ubuntu.com/en/styleguide)
+# Canonical Style Guide automation(https://docs.ubuntu.com/en/sty leguide)
 
 This repository contains the following
 
@@ -56,10 +56,17 @@ In the example above, the worklow is organised as a single job. This is importan
 There are three job steps
  - The github/checkout action: this fetches the code from the repo calling the workflow
  - This style guide action: this fetches the styles and, if not present, a default config for Vale
- - The vale/reviewdog action: this runs Vale using reviewdog, to insert comments into a pull-request.
+ - The vale/reviewdog action: this runs Vale using reviewdog, to insert comments into a pull-request
 
- The result
+ This workflow uses reviewdog to insert output into review comments on any changes. The advantage of this method is:
+  - the actions only run on new material (i.e. stuff added in the current PR)
+  - it is surfaced directly where it will be noticed
 
  ![Alt text](<Screenshot from 2023-11-03 19-46-45.png>)
+
+
+
+
+ 
 <!-- LINKS -->
 [Vale styles]: https://vale.sh/docs/topics/styles/
