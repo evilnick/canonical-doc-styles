@@ -1,4 +1,5 @@
-# Canonical Style Guide automation(https://docs.ubuntu.com/en/sty leguide)
+# Canonical Style Guide automation
+(https://docs.ubuntu.com/en/styleguide)
 
 This repository contains the following
 
