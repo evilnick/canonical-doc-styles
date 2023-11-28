@@ -10,7 +10,6 @@ tokens:
   - '[a-z][.?!][A-Z]'
 
 # Reasoning:
-# We appreciate that you may have learnt to put two spaces after a full point/period/full stop.
-# There is no need to and very little point. Most documentation parsers remove double-spaces
-# anyway. If you want to debate this, please file an issue or hop on to the documentation 
-# mattermost channel where someone will be happy to tell you that you are wrong.
+# We appreciate that you may have been taught to put two spaces after a 
+# full point/period/full stop. There is no need to and very little
+# point. Most documentation parsers remove double-spaces anyway. 
